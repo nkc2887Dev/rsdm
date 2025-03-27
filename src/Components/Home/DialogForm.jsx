@@ -26,9 +26,10 @@ const DialogForm = ({ from, closeDialog }) => {
     try {
       const response = await axios.post(
         "http://localhost:3000/api/v1/contacts/create",
-        formData,
+        formData
       );
       toast({ title: "Form Submitted Successfully" });
+      console.log(response.data);
       closeDialog(); // Close the dialog after submission
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -38,7 +39,7 @@ const DialogForm = ({ from, closeDialog }) => {
 
   return (
     <form onSubmit={handleSubmit} className="md:space-y-6 space-y-3 w-full">
-      <h2 className="text-2xl font-semibold text-blue-950 text-center">
+      <h2 className="text-xl font-semibold text-[#EFF6FF] text-center m-4 mt-10 drop-shadow-md">
         Drop Your Inquiry & Get Free Demo Details
       </h2>
 
@@ -46,7 +47,7 @@ const DialogForm = ({ from, closeDialog }) => {
       <div className="space-y-1">
         <label
           htmlFor="name"
-          className="block text-sm font-medium text-gray-700"
+          className="block text-sm font-medium text-gray-300"
         >
           Name
         </label>
@@ -58,7 +59,7 @@ const DialogForm = ({ from, closeDialog }) => {
           value={formData.name}
           onChange={handleChange}
           required
-          className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          className="w-full p-2 rounded-md bg-[#EFF6FF] border border-gray-600 text-white focus:ring-maroon-500 focus:border-maroon-500 shadow-md"
         />
       </div>
 
@@ -66,7 +67,7 @@ const DialogForm = ({ from, closeDialog }) => {
       <div className="space-y-1">
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-gray-700"
+          className="block text-sm font-medium text-gray-300"
         >
           Email
         </label>
@@ -78,7 +79,7 @@ const DialogForm = ({ from, closeDialog }) => {
           value={formData.email}
           onChange={handleChange}
           required
-          className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          className="w-full p-2 rounded-md bg-[#EFF6FF] border border-gray-600 text-white focus:ring-maroon-500 focus:border-maroon-500 shadow-md"
         />
       </div>
 
@@ -86,7 +87,7 @@ const DialogForm = ({ from, closeDialog }) => {
       <div className="space-y-1">
         <label
           htmlFor="contact"
-          className="block text-sm font-medium text-gray-700"
+          className="block text-sm font-medium text-gray-300"
         >
           Contact Number
         </label>
@@ -98,7 +99,7 @@ const DialogForm = ({ from, closeDialog }) => {
           value={formData.number}
           onChange={handleChange}
           required
-          className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          className="w-full p-2 rounded-md bg-[#EFF6FF] border border-gray-600 text-white focus:ring-maroon-500 focus:border-maroon-500 shadow-md"
         />
       </div>
 
@@ -106,7 +107,7 @@ const DialogForm = ({ from, closeDialog }) => {
       <div className="space-y-1">
         <label
           htmlFor="message"
-          className="block text-sm font-medium text-gray-700"
+          className="block text-sm font-medium text-gray-300"
         >
           Message
         </label>
@@ -117,18 +118,25 @@ const DialogForm = ({ from, closeDialog }) => {
           value={formData.message}
           onChange={handleChange}
           required
-          className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          className="w-full p-2 rounded-md bg-[#EFF6FF] border border-gray-600 text-white focus:ring-maroon-500 focus:border-maroon-500 shadow-md"
           rows="4"
         ></textarea>
       </div>
 
       {/* Submit & Close Buttons */}
-      <div className="flex gap-3 justify-center">
+      <div className="flex justify-between gap-3">
         <button
           type="submit"
-          className="w-full px-4 py-2 text-white bg-blue-600 rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="w-full py-2 bg-gradient-to-r from-blue-800 to-blue-950 text-white rounded-md shadow-lg hover:from-blue-950 hover:to-blue-800 hover:shadow-xl transition-all"
         >
           Submit
+        </button>
+        <button
+          type="button"
+          onClick={closeDialog}
+          className="w-full py-2 bg-gradient-to-r from-gray-600 to-gray-700 text-white rounded-md shadow-lg hover:from-gray-700 hover:to-gray-800 hover:shadow-xl transition-all"
+        >
+          Close
         </button>
       </div>
     </form>

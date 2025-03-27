@@ -17,7 +17,7 @@ const Freelancers = () => {
   };
 
   const settings = {
-    dots: true,
+    ...(photos.length <= 4 ? { dots: true } : { dots: false }),
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -48,27 +48,31 @@ const Freelancers = () => {
     })();
   }, []);
 
-  if (loading) {
-    return <div className="text-center py-8">Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div className="text-center py-8">Loading...</div>;
+  // }
 
   return (
-    <div className="carousel-container relative overflow-hidden max-w-7xl mx-auto py-8">
-      <h1 className="text-center text-4xl font-bold text-blue-950 mb-10">
-        Stundents As a Freelancer
-      </h1>
-      <Slider ref={(slider) => (sliderRef = slider)} {...settings}>
-        {photos.map((image, index) => (
-          <div key={index} className="p-4 slide">
-            <img
-              src={image.img}
-              alt={`Placement ${index + 1}`}
-              className="w-full h-auto max-h-[400px] sm:max-h-[300px] md:max-h-[350px] lg:max-h-[400px] xl:max-h-[450px] object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-            />
-          </div>
-        ))}
-      </Slider>
-    </div>
+    <>
+      {!loading && (
+        <div className="carousel-container relative overflow-hidden max-w-7xl mx-auto py-10">
+          <h1 className="text-center text-4xl font-bold text-blue-950 mb-10">
+            Stundents As a Freelancer
+          </h1>
+          <Slider ref={(slider) => (sliderRef = slider)} {...settings}>
+            {photos.map((image, index) => (
+              <div key={index} className="p-4 slide">
+                <img
+                  src={image.img}
+                  alt={`Placement ${index + 1}`}
+                  className="w-full h-auto max-h-[400px] sm:max-h-[300px] md:max-h-[350px] lg:max-h-[400px] xl:max-h-[450px] object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
+      )}
+    </>
   );
 };
 

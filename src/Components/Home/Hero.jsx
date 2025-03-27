@@ -1,23 +1,10 @@
 import { useState } from "react";
-
 import { assets } from "@/assets/assetimports";
-
-import DialogForm from "../Home/DialogForm";
-import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import Stats from "./Stats";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  CheckCircle,
-  GraduationCap,
-  Users,
-  Award,
-  Building,
-  Phone,
-  MessageCircle,
-} from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Link } from "react-router-dom";
+import { CheckCircle } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import DialogForm from "./DialogForm";
 
 const Hero = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -80,6 +67,10 @@ const Hero = () => {
                       Practical & Live Training
                     </span>
                   </div>
+                  <div className="flex items-center gap-3 p-3 bg-gray-100 rounded-lg">
+                    <CheckCircle className="text-green-600 h-5 w-5" />
+                    <span className="font-medium">Interview Preparation</span>
+                  </div>
                 </div>
               </div>
 
@@ -94,11 +85,40 @@ const Hero = () => {
               </div>
 
               {/* Call to Action Button */}
-              <div className="mt-6">
-                <Button size="lg" className="w-full md:w-auto px-8">
-                  Inquire Now
-                </Button>
+              <div className="mt-6 flex flex-wrap items-center gap-6">
+                {/* Inquire Now Button */}
+                <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                  <DialogTrigger asChild>
+                    <Button size="lg" className="px-8 w-full md:w-auto">
+                      Inquire Now
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="bg-white rounded-lg p-4 md:mt-10 max-w-md mx-auto">
+                    <DialogForm
+                      closeDialog={handleCloseDialog}
+                      from={"About-Course-Hero"}
+                    />
+                  </DialogContent>
+                </Dialog>
+                {/* Logo Section */}
+                <div className="flex flex-wrap justify-center items-center gap-4">
+                  {[assets.pr1, assets.pr2, assets.pr3, assets.pr4].map(
+                    (tool, index) => (
+                      <div
+                        key={index}
+                        className="w-14 h-14 flex items-center justify-center border bg-white p-2 rounded-md shadow-sm"
+                      >
+                        <img
+                          className="w-full h-full object-contain"
+                          src={tool}
+                          alt={`Partner ${index + 1}`}
+                        />
+                      </div>
+                    )
+                  )}
+                </div>
               </div>
+
               {/* <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="px-8">
                   Enroll Now

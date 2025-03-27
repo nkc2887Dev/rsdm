@@ -4,7 +4,7 @@ import { assets } from "@/assets/assetimports";
 
 const Representitive = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 space-y-4 mt-10">
+    <div className="max-w-7xl mx-auto px-4 py-2 space-y-4 mt-10">
       <div>
         <h1 className="text-center text-4xl font-bold text-blue-950 mb-10">
           Our Regular Recruiters (Representative List)

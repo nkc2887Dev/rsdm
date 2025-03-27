@@ -1,68 +1,42 @@
 import React from "react";
-
 import { assets } from "@/assets/assetimports";
+import { Button } from "../ui/button";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <div className="relative overflow-hidden">
-      {/* Mobile Video */}
-      <div className="block md:hidden min-h-screen w-full relative">
-        <video
-          src={assets.mobileBg} // Replace with the actual vertical video for mobile
-          className="w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-        />
-        <div className="absolute top-0 left-0 w-full h-[91vh] bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="text-center text-white space-y-4 px-4 sm:px-6">
-            <h1 className="text-3xl font-bold">
-              Rajkot School of Digital Marketing
-            </h1>
-            <p className="text-base">
-              70% Top Digital Marketing agency&apos;s senior Digital Marketers
-              belong to RSDM.
-            </p>
-            <p className="text-sm">
-              150+ Placement Delivered | 500+ Active Placement Partners | 3
-              Layer Placement Process
-            </p>
-            <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-200">
-              Contact Now
-            </button>
+    <>
+      <section className="relative bg-gradient-to-b from-[#202B4D] to-[#26355D] text-white py-8">
+        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:60px_60px]"></div>
+        <div className="container relative z-10 mx-auto px-4 py-12 md:py-24 flex flex-col items-center text-center">
+          <h1 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
+            Launch Your Digital Marketing Career
+          </h1>
+          <p className="text-lg md:text-xl text-gray-200 max-w-3xl mb-8">
+            70% of top digital marketing agency's senior marketers belong to
+            RSDM. Join the network of successful digital marketing
+            professionals.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+              <span className="font-semibold text-xl">150+</span>
+              <span className="text-gray-200">Placements Delivered</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+              <span className="font-semibold text-xl">500+</span>
+              <span className="text-gray-200">Active Partners</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+              <span className="font-semibold text-xl">3</span>
+              <span className="text-gray-200">Layer Placement Process</span>
+            </div>
           </div>
+          <Button size="lg">
+            <Link to="/contact">Contact About Placements</Link>
+          </Button>
         </div>
-      </div>
-
-      {/* Desktop and Tablet Video */}
-      <div className="hidden md:block min-h-screen md:max-h-[80vh] w-full relative">
-        <video
-          src={assets.bgVid}
-          className="w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-        />
-        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="text-center text-white space-y-4 px-4 sm:px-6">
-            <h1 className="text-4xl md:text-5xl font-bold">
-              Rajkot School of Digital Marketing
-            </h1>
-            <p className="text-lg md:text-2xl">
-              70% Top Digital Marketing agency&apos;s senior Digital Marketers
-              belong to RSDM.
-            </p>
-            <p className="text-base md:text-lg">
-              150+ Placement Delivered | 500+ Active Placement Partners | 3
-              Layer Placement Process
-            </p>
-            <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-200">
-              Contact Now
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 

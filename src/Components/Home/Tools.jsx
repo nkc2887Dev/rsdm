@@ -1,11 +1,11 @@
 import React from "react";
 import { assets } from "@/assets/assetimports";
 
+const tools = Array.from({ length: 24 }, (_, i) => ({
+  img: assets[`mt${i + 1}`],
+  alt: `mt${i + 1}`,
+}));
 const Tools = () => {
-  const tools = Array.from({ length: 24 }, (_, i) => ({
-    img: assets[`mt${i + 1}`],
-    alt: `mt${i + 1}`,
-  }));
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">

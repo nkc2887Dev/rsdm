@@ -13,7 +13,6 @@ import Course from "./page/Courses/Course";
 import Home from "./page/Home/Home";
 import Placements from "./page/Placements/Placements";
 import Layout from "./Components/Layout";
-import HomeTest from "./Components/page";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -30,7 +29,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/test" element={<HomeTest />} />
           <Route path="/courses" element={<Course />} />
           <Route path="/placements" element={<Placements />} />
           <Route path="/about" element={<About />} />

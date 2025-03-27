@@ -6,7 +6,7 @@ import { Card, CardHeader, CardContent } from "../../Components/ui/card";
 
 const StatCard = ({ IconComponent, count, suffix, description }) => {
   return (
-    <div className="flex flex-col items-center justify-center  transition-shadow duration-300 text-blue-950 gap-2 py-4  md:gap-1 border border-blue-900 shadow-lg  shadow-gray-200">
+    <div className="rounded-lg flex flex-col items-center justify-center  transition-shadow duration-300 text-blue-950 gap-2 py-4  md:gap-1 border shadow-lg shadow-gray-500">
       <p className="text-4xl">{IconComponent && <IconComponent />}</p>
       <div className="text-center font-quickSand">
         <h3 className="flex items-center justify-center text-xl font-bold">

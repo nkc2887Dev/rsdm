@@ -29,7 +29,7 @@ const Course = () => {
 
   return (
     <div>
-      <div className="bg-blue-50 py-6">
+      <div className="bg-blue-50">
         <Hero />
 
         {/* EMI Information */}
@@ -37,16 +37,17 @@ const Course = () => {
           <p>EMI options available</p>
         </div> */}
 
-        <CourseDetails courseDetails={courseDetailsData} />
+        {/* <CourseDetails courseDetails={courseDetailsData} /> */}
       </div>
       {/* Hero Section */}
       <AboutDigital />
-      <CourseOfferings />
-      <ToolsMarquee />
-      <Projects />
+      {/* <CourseOfferings /> */}
+      {/* <ToolsMarquee /> */}
       {/* <PriceCard /> */}
+      <div className="bg-blue-50">
       <Certificate />
-      <Faq />
+      </div>
+      {/* <Faq /> */}
     </div>
   );
 };

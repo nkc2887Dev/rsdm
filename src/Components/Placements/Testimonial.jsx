@@ -1,13 +1,9 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect, useRef, useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "@/utils/styles/carousel.css";
+import { NextArrow, PrevArrow } from "../common/Arrow";
 import { Card, CardContent } from "../ui/card";
 
 const testimonialsData = [
@@ -94,55 +90,75 @@ const testimonialsData = [
 
 const Testimonial = () => {
   const [testimonials, setTestimonials] = useState([]);
+  let sliderRef = useRef(null);
+
+  const settings = {
+    ...(testimonials.length <= 4 ? { dots: true } : { dots: false }),
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024, // Tablets & small desktops
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768, // Mobile screens
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
 
   useEffect(() => {
     setTestimonials(testimonialsData);
   }, []);
 
   return (
-    <div className="relative overflow-hidden max-w-7xl mx-auto py-8">
-      <h2 className="text-4xl font-bold text-center mb-8">Testimonials</h2>
-      <Carousel
-        plugins={[
-          Autoplay({
-            delay: 3000,
-          }),
-        ]}
-        className="w-full"
-      >
-        <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition duration-300">
-          &#10094;
-        </CarouselPrevious>
-        <CarouselContent className="flex w-full space-x-4">
-          {testimonials.map((testimonial, index) => (
-            <CarouselItem
-              key={index}
-              className="flex-none w-full md:w-1/2 lg:w-1/3"
-            >
-              <div className="p-4">
-                <Card className="w-full shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <CardContent className="flex flex-col items-center justify-center p-6">
-                    <img
-                      src={testimonial.img}
-                      alt={`Testimonial from ${testimonial.name}`}
-                      className="w-16 h-16 rounded-full mb-4"
-                    />
-                    <h3 className="text-xl font-bold mb-2">
-                      {testimonial.name}
-                    </h3>
-                    <p className="text-sm text-gray-600 text-center">
-                      {testimonial.review}
+    <div className="carousel-container relative overflow-hidden max-w-7xl mx-auto py-8 my-6">
+      <h1 className="text-center text-4xl font-bold text-blue-950 mb-10">
+        Success Stories
+      </h1>
+      <Slider ref={(slider) => (sliderRef = slider)} {...settings}>
+        {testimonials.map((testimonial, i) => (
+          <div key={i} className="flex-none w-full md:w-1/2 lg:w-1/3">
+            <div className="p-4">
+              <Card className="border-right shadow-md">
+                <CardContent className="pt-6">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="mb-4 rounded-full overflow-hidden">
+                      <img
+                        src={testimonial.img || "/placeholder.svg"}
+                        alt={testimonial.name}
+                        width={80}
+                        height={80}
+                        className="rounded-full bg-gray-200"
+                      />
+                    </div>
+                    <p className="text-gray-600 italic mb-4">
+                      "{testimonial.review}"
                     </p>
-                  </CardContent>
-                </Card>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselNext className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition duration-300">
-          &#10095;
-        </CarouselNext>
-      </Carousel>
+                    <h4 className="font-bold text-navy-900">
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-sm text-gray-600">{testimonial.role}</p>
+                    <p className="text-sm text-gray-500">
+                      {testimonial.company}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 };

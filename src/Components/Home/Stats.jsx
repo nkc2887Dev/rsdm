@@ -7,7 +7,7 @@ import { Card, CardHeader, CardContent } from "../../Components/ui/card";
 
 export const StatCard = ({ IconComponent, count, suffix, description }) => {
   return (
-    <Card className="flex flex-col items-center z-40 justify-center px-3  shadow-lg hover:shadow-xl transition-shadow duration-300 text-blue-950">
+    <Card className="flex flex-col items-center z-40 justify-center px-3 mx-2 shadow-lg hover:shadow-xl transition-shadow duration-300 text-blue-950">
       <CardHeader className="text-5xl">
         {IconComponent && <IconComponent />}
       </CardHeader>

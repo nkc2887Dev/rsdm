@@ -82,14 +82,14 @@ const FaqItem = ({ question, answer }) => (
 
 export function Faq({ items = faqItems }) {
   return (
-    <div className="py-8 px-4">
-      <h1 className="text-center text-blue-950 text-4xl font-semibold font-openSans my-8">
+    <div className="">
+      <h3 className="text-2xl font-bold text-blue-950 mb-4">
         Frequently Asked Questions
-      </h1>
+      </h3>
       <Accordion
         type="single"
         collapsible
-        className="w-full max-w-7xl mx-auto space-y-4"
+        className="w-full  mx-auto space-y-4"
       >
         {items.map((item, index) => (
           <FaqItem key={index} question={item.question} answer={item.answer} />

@@ -1,19 +1,15 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import React, { useEffect, useState } from "react";
-
-import { assets } from "@/assets/assetimports"; // Ensure this is the correct import path
+import React, { useEffect, useRef, useState } from "react";
 import { usePhotos } from "@/hooks/use-photos";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "@/utils/styles/carousel.css";
+import { NextArrow, PrevArrow } from "../common/Arrow";
 
 const TopPlacements = () => {
   const { photos, fetchPhotos } = usePhotos();
   const [loading, setLoading] = useState(true);
+  let sliderRef = useRef(null);
 
   useEffect(() => {
     (async () => {
@@ -22,44 +18,58 @@ const TopPlacements = () => {
     })();
   }, []);
 
-  if (loading) {
-    return <div className="text-center py-8">Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div className="text-center py-8">Loading...</div>;
+  // }
+
+  const settings = {
+    ...(photos.length <= 4 ? { dots: true } : { dots: false }),
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024, // Tablets & small desktops
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768, // Mobile screens
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
 
   const images = photos.map((photo) => photo.img);
 
   return (
-    <div className="relative overflow-hidden max-w-7xl mx-auto py-8">
-      <h2 className="text-4xl font-bold text-center mb-8">Top Placements</h2>
-      <Carousel
-        plugins={[
-          Autoplay({
-            delay: 3000,
-          }),
-        ]}
-        className="w-full"
-      >
-        <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition duration-300">
-          &#10094;
-        </CarouselPrevious>
-        <CarouselContent className="flex w-full space-x-4">
-          {images.map((image, index) => (
-            <CarouselItem key={index} className="flex-none w-full md:w-1/3">
-              <div className="p-4">
+    <>
+      {!loading && (
+        <div className="carousel-container relative overflow-hidden max-w-7xl mx-auto py-8 my-6">
+          <h1 className="text-center text-4xl font-bold text-blue-950 mb-10">
+            Top Placements
+          </h1>
+          <Slider ref={(slider) => (sliderRef = slider)} {...settings}>
+            {photos.map((image, index) => (
+              <div key={index} className="p-4 slide">
                 <img
-                  src={image}
+                  src={image.img}
                   alt={`Placement ${index + 1}`}
-                  className="w-full h-[370px] object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  className="w-full h-auto max-h-[400px] sm:max-h-[300px] md:max-h-[350px] lg:max-h-[400px] xl:max-h-[450px] object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                 />
               </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselNext className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition duration-300">
-          &#10095;
-        </CarouselNext>
-      </Carousel>
-    </div>
+            ))}
+          </Slider>
+        </div>
+      )}
+    </>
   );
 };
 

@@ -99,6 +99,10 @@ import Tool9 from "./Tool9.svg";
 import l27 from "./Tradeindia.png";
 import welcome from "./welcome.jpg";
 import l28 from "./WhatsApp Image 2024-12-16 at 19.32.08_009bfb6d.jpg";
+import pr1 from "./pr1.png";
+import pr2 from "./pr2.png";
+import pr3 from "./pr3.png";
+import pr4 from "./pr4.png";
 
 export const assets = {
   logo,
@@ -203,4 +207,8 @@ export const assets = {
   representitive,
   mobileBg,
   about,
+  pr1,
+  pr2,
+  pr3,
+  pr4,
 };
