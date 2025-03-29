@@ -76,36 +76,27 @@ const Navbar = () => {
           </button>
           {/* Desktop Nav */}
           <nav className="hidden lg:flex gap-6">
-            <Link
-              to="/"
-              className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-            >
-              Home
-            </Link>
-            <Link
-              to="/courses"
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-            >
-              Courses
-            </Link>
-            <Link
-              to="/placements"
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-            >
-              Placements
-            </Link>
-            <Link
-              to="/about"
-              className="text-sm text-nowrap font-medium text-muted-foreground hover:text-primary transition-colors"
-            >
-              About Us
-            </Link>
-            <Link
-              to="/contact"
-              className="text-sm text-nowrap font-medium text-muted-foreground hover:text-primary transition-colors"
-            >
-              Contact Us
-            </Link>
+            {links.map((link) => {
+              const isActive = location.pathname === link.url;
+
+              return (
+                <Link
+                  key={link.url}
+                  to={link.url}
+                  className={`relative text-sm font-medium transition-colors hover:text-primary ${
+                    isActive ? "text-primary" : "text-muted-foreground"
+                  }`}
+                >
+                  <span
+                    className={`relative pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-red-500 after:transition-all after:duration-300 after:ease-in-out ${
+                      isActive ? "after:w-full" : "after:w-0 hover:after:w-full"
+                    }`}
+                  >
+                    {link.title}
+                  </span>
+                </Link>
+              );
+            })}
           </nav>
           <div className="hidden lg:flex items-center gap-4">
             <Link to={`tel:${PHONE}`}>

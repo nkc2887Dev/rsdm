@@ -54,12 +54,13 @@ import mt16 from "./mt16.png";
 import mt17 from "./mt17.png";
 import mt18 from "./mt18.png";
 import mt19 from "./mt19.png";
-import mt2 from "./mt2.png";
+import mt25 from "./mt2.png";
 import mt20 from "./mt20.png";
 import mt21 from "./mt21.png";
 import mt22 from "./mt22.png";
 import mt23 from "./mt23.png";
 import mt24 from "./mt24.png";
+import mt2 from "./mt25.png";
 import mt3 from "./mt3.png";
 import mt4 from "./mt4.png";
 import mt5 from "./mt5.png";
@@ -103,6 +104,8 @@ import pr1 from "./pr1.png";
 import pr2 from "./pr2.png";
 import pr3 from "./pr3.png";
 import pr4 from "./pr4.png";
+import certifi from "./certificate/certificate.png";
+import certifi2 from "./certificate/certificate2.png";
 
 export const assets = {
   logo,
@@ -183,6 +186,7 @@ export const assets = {
   mt22,
   mt23,
   mt24,
+  mt25,
   p1,
   p2,
   p3,
@@ -211,4 +215,6 @@ export const assets = {
   pr2,
   pr3,
   pr4,
+  certifi,
+  certifi2,
 };

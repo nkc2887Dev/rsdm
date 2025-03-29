@@ -101,7 +101,7 @@ const Hero = () => {
                   </DialogContent>
                 </Dialog>
                 {/* Logo Section */}
-                <div className="flex flex-wrap justify-center items-center gap-4">
+                {/* <div className="flex flex-wrap justify-center items-center gap-4">
                   {[assets.pr1, assets.pr2, assets.pr3, assets.pr4].map(
                     (tool, index) => (
                       <div
@@ -116,7 +116,7 @@ const Hero = () => {
                       </div>
                     )
                   )}
-                </div>
+                </div> */}
               </div>
 
               {/* <div className="flex flex-col sm:flex-row gap-4">

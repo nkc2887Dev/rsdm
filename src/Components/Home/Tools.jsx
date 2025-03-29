@@ -1,12 +1,12 @@
 import React from "react";
 import { assets } from "@/assets/assetimports";
 
-const tools = Array.from({ length: 24 }, (_, i) => ({
+const tools = Array.from({ length: 25 }, (_, i) => ({
   img: assets[`mt${i + 1}`],
   alt: `mt${i + 1}`,
-}));
-const Tools = () => {
+})).filter((_, i) => ![2, 13, 19].includes(i));
 
+const Tools = () => {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
       <div className="text-center">

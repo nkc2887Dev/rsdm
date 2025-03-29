@@ -129,11 +129,11 @@ const AboutDigital = () => {
           </div>
 
           <Tabs defaultValue="overview" className="w-full">
-            <TabsList className="bg-blue-100 grid w-full grid-cols-3 mb-8">
+            <TabsList className="bg-blue-100 grid w-full grid-cols-4 mb-8">
               <TabsTrigger className="text-blue-950" value="overview">
                 Overview
               </TabsTrigger>
-              {/* <TabsTrigger value="curriculum">Curriculum</TabsTrigger> */}
+              <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
               <TabsTrigger value="benefits">Benefits</TabsTrigger>
               <TabsTrigger value="faqs">FAQs</TabsTrigger>
             </TabsList>
@@ -279,7 +279,7 @@ const AboutDigital = () => {
               </div> */}
             </TabsContent>
 
-            {/* <TabsContent value="curriculum">
+            <TabsContent value="curriculum">
               <div className="space-y-6">
                 <h3 className="text-2xl font-bold text-blue-950 mb-4">
                   Course Curriculum
@@ -359,6 +359,78 @@ const AboutDigital = () => {
                         "Future of AI in Marketing",
                       ],
                     },
+                    {
+                      module: "Module 9: Influencer Marketing",
+                      topics: [
+                        "Identifying Influencers",
+                        "Building Partnerships",
+                        "Campaign Strategies",
+                        "Measuring ROI",
+                      ],
+                    },
+                    {
+                      module: "Module 10: Video Marketing",
+                      topics: [
+                        "Video Content Strategies",
+                        "YouTube Marketing",
+                        "Live Streaming Tactics",
+                        "Video SEO",
+                      ],
+                    },
+                    {
+                      module: "Module 11: Affiliate Marketing",
+                      topics: [
+                        "Understanding Affiliate Marketing",
+                        "Finding Affiliate Partners",
+                        "Commission Structures",
+                        "Tracking and Analytics",
+                      ],
+                    },
+                    {
+                      module: "Module 12: E-commerce Marketing",
+                      topics: [
+                        "Product Listing Optimization",
+                        "E-commerce SEO & PPC",
+                        "Cart Abandonment Strategies",
+                        "Customer Retention Techniques",
+                      ],
+                    },
+                    {
+                      module: "Module 13: Mobile Marketing",
+                      topics: [
+                        "SMS and Push Notifications",
+                        "Mobile App Marketing",
+                        "Location-Based Marketing",
+                        "Optimizing for Mobile Experience",
+                      ],
+                    },
+                    {
+                      module: "Module 14: Marketing Automation",
+                      topics: [
+                        "CRM and Lead Nurturing",
+                        "Email and Workflow Automation",
+                        "Chatbots and AI Integration",
+                        "Personalization at Scale",
+                      ],
+                    },
+                    {
+                      module: "Module 15: Online Reputation Management",
+                      topics: [
+                        "Handling Negative Reviews",
+                        "Brand Monitoring Tools",
+                        "Crisis Management Strategies",
+                        "Building a Positive Online Presence",
+                      ],
+                    },
+                    {
+                      module: "Module 16: Conversion Rate Optimization (CRO)",
+                      topics: [
+                        "A/B Testing and Experimentation",
+                        "Landing Page Optimization",
+                        "User Behavior Analytics",
+                        "Improving Sales Funnels",
+                      ],
+                    },
                   ].map((module, index) => (
                     <AccordionItem key={index} value={`module-${index}`}>
                       <AccordionTrigger className="text-lg font-semibold hover:text-blue-950">
@@ -383,7 +455,7 @@ const AboutDigital = () => {
                   ))}
                 </Accordion>
               </div>
-            </TabsContent> */}
+            </TabsContent>
 
             <TabsContent value="benefits">
               <div className="space-y-6">
